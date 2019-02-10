@@ -32,7 +32,14 @@
           <groupId>org.codehaus.mojo</groupId>
           <!-- specify the plugin details-->
           <!-- Configure failOnError=true, with low threshold and set xml output to true. Set output folder path to ${project.build.directory}/findbugs-->
-     
+		  <artifactId>findbugs-maven-plugin</artifactId>
+		  <version>3.0.5</version>
+		  <configuration>
+		  	  <failOnError>false</failOnError> 
+		  	  <threshold>Low</threshold>
+    		  <xmlOutput>true</xmlOutput>
+    		  <xmlOutputDirectory>${project.build.directory}/findbugs</xmlOutputDirectory>
+		  </configuration>
           <executions>
           <!--Configure goal -"check" for "compile" phase with id "analyze-compile"-->
               <execution>
@@ -40,6 +47,9 @@
                 <phase>compile</phase>
                 
                   <!-- Write the goal here -->
+                <goals>
+					<goal>check</goal>
+				</goals>
                   
             </execution>
           </executions>
